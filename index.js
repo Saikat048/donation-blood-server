@@ -34,6 +34,24 @@ async function run() {
       res.send(result)
     })
 
+
+
+    // put info email 
+    app.put('/info/:email', async (req, res) => {
+      const email = req.params.email;
+      const update = req.body;
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updateDoc = {
+
+        $set: update
+      };
+      const result = await infoCollection.updateOne(filter, updateDoc, options);
+      res.send(result)
+    })
+
+
+
   } finally {
 
     // await client.close();
