@@ -25,6 +25,16 @@ async function run() {
 
 
 
+    // User Profile 
+    app.get('/findUser', async (req, res) => {
+      const email = req.query.email;
+      // console.log(email)
+      const query = { email: email };
+      const cursor = infoCollection.find(query);
+      const info = await cursor.toArray();
+      res.send(info)
+    });
+
 
 
     // post info 
