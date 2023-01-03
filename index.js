@@ -24,6 +24,15 @@ async function run() {
     const infoCollection = client.db("blood-donation").collection("update-info");
 
 
+    // get info ?
+    app.get('/info', async (req, res) => {
+      const query = {};
+      const cursor = infoCollection.find(query);
+      const info = await cursor.toArray();
+      res.send(info)
+    });
+
+
 
     // User Profile 
     app.get('/findUser', async (req, res) => {
