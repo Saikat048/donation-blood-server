@@ -26,7 +26,13 @@ async function run() {
 
 
 
-   
+
+    // post info 
+    app.post('/info', async (req, res) => {
+      const info = req.body;
+      const result = await infoCollection.insertOne(info);
+      res.send(result)
+    })
 
   } finally {
 
@@ -48,4 +54,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log('Example app listening on port', port)
 })
- 
