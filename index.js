@@ -34,6 +34,18 @@ async function run() {
 
 
 
+
+    // get info one
+    app.get('/info/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const info = await infoCollection.findOne(query);
+      res.send(info)
+    })
+
+
+
+
     // User Profile 
     app.get('/findUser', async (req, res) => {
       const email = req.query.email;
